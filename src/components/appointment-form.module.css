@@ -1,0 +1,8 @@
+.form {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  z-index: 1;
+  background-color: orchid;
+  padding: 10rem;
+}
