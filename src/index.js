@@ -15,3 +15,6 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+// You have many packages installed and not used, check which ones you are not using and remove them
+// it will make the bundle size smaller and the app will be faster :)

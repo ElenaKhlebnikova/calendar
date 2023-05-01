@@ -10,6 +10,7 @@ const wed = firstWeek.filter((day) => day.toDateString().startsWith('Wed'));
 const thu = firstWeek.filter((day) => day.toDateString().startsWith('Thu'));
 const fri = firstWeek.filter((day) => day.toDateString().startsWith('Fri'));
 
+// This file should be `.jsx` extension and lowercase `app.jsx`
 function App() {
     const [shown, setShown] = useState(false);
     const [date, setDate] = useState('');
@@ -18,7 +19,10 @@ function App() {
     const [data, setData] = useState([]);
 
     useEffect(() => {
+        // try deleting this AbortController if it doesn't work :)
         const controller = new AbortController();
+
+        // it's better to define a function and await it instead of using an IEF
         (async () => {
             await fetch(
                 `http://localhost:5000/appointments?doctorId=${doctor}`,
@@ -61,6 +65,10 @@ function App() {
                     setDoctor(e.target.value);
                 }}
             >
+                {/* I know you are planning on fixing this, but this is just a meow reminder
+                    You should not have IDs like this defined here,
+                    you need to fetch all the doctors and use their IDs and not hardcoded IDs
+                */}
                 <option value="">Chose a doctor</option>
                 <option value="64466a35b6d3c5e48ed2d191">Dr. Jane Doe</option>
                 <option value="644b8cf81492bc460be6649e">Ute Busch</option>
@@ -75,6 +83,11 @@ function App() {
                     <div>Fri</div>
                 </div>
 
+                {/*  This repetition is a bit of a problem as you said,
+    maybe before moving forward you can try to find a way to avoid this 
+
+    I think the solution could be to rewrite the function which gives you the values for the dates
+*/}
                 <div className={styles.bodyOfTheTable}>
                     <div>
                         {' '}

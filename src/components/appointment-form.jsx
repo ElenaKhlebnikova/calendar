@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import styles from './appointment-form.module.css';
+
+// make sure to add prop-types for all props of each component
 function AppointmentForm({ doctor, hour, date }) {
     const submitFormAndMakeAnAppointment = async function (e) {
         e.preventDefault();
@@ -9,6 +11,9 @@ function AppointmentForm({ doctor, hour, date }) {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
+                // if key and value has the same name you can use it as a value like this
+
+                // {doctorId: doctor, name, phone,....  }
                 doctorId: doctor,
                 name: name,
                 phone: phone,
@@ -35,8 +40,7 @@ function AppointmentForm({ doctor, hour, date }) {
                     ></input>
                 </label>
                 <label>
-                    {' '}
-                    Phone:
+                    {/*   don't think this is needed {' '} */} Phone:
                     <input
                         type="text"
                         placeholder="Please enter your phone"
@@ -44,6 +48,11 @@ function AppointmentForm({ doctor, hour, date }) {
                     ></input>
                 </label>
                 <select onChange={(e) => setProcedure(e.target.value)}>
+                    {/* Maybe you can put these values and options in an array of objects and loop over them here to avoid repetion of code */}
+
+                    {/* 
+                        [{name: 'Cholecystectomy', value: 'Cholecystectomy'}, {}, {}, ....]
+                    */}
                     <option value="none">Please chose a procedure</option>
                     <option value="Cholecystectomy">Cholecystectomy</option>
 
@@ -59,6 +68,8 @@ function AppointmentForm({ doctor, hour, date }) {
                 <button
                     type="submit"
                     value="submit"
+                    // This can be just
+                    // onClick={submitFormAndMakeAnAppointment}
                     onClick={(e) => submitFormAndMakeAnAppointment(e)}
                 >
                     Submit
