@@ -1,3 +1,15 @@
+// rename file to utils.js or index.js
+/*
+export { nextWeeks, firstWeek, workingHours };
+getDaysInMonth(month, year, day);
+
+These 2 lines are a bit confusing, the function is setting some values outside of it and then those values are exported
+It would be better maybe if the function calculates those values internally and return them 
+and you can just use the returned object from the function
+
+I think improving this function will help in avoiding the repetition in the other file
+*/
+
 //Getting the current day
 const currentDay = new Date(Date.now());
 const day = currentDay.getDate();
